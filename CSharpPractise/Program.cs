@@ -10,7 +10,7 @@ namespace CSharpPractise
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Hello World!");
 
         }
     }
