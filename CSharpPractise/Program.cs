@@ -107,6 +107,103 @@ namespace CSharpPractise
 
 
             //************************    Numbers in C#   *************************************
+
+
+            /*
+             * Explore integer math 
+             */
+
+            Console.WriteLine("");
+
+            int a = 18;
+            int b = 6;
+            int c = a - b;
+            Console.WriteLine(c);
+
+
+            /*
+             * Explore order of operations
+             */
+
+            a = 5;
+            b = 4;
+            c = 2;
+            int d = a + b * c;
+            Console.WriteLine(d);
+
+            d = (a + b) - 6 * c + (12 * 4) / 3 + 12;
+            Console.WriteLine(d);
+
+            d = (a + b) / c;
+            Console.WriteLine(d);
+
+            /*
+             * Explore Integer precision and limits
+             */
+
+
+            a = 7;
+            b = 4;
+            c = 3;
+            d = (a + b) / c;
+            int e = (a + b) % c;
+            Console.WriteLine($"quotient: {d}"); // 3
+            Console.WriteLine($"remainder: {e}"); // 2
+
+            //Max values of integers. THey have limits in computer programming
+            int max = int.MaxValue;
+            int min = int.MinValue;
+            Console.WriteLine($"The range of integers is {min} to {max}");
+
+            //Example of overflow
+            int what = max + 3;
+            Console.WriteLine($"An example of overflow: {what}");
+
+
+
+            /*
+             * Work with the double type
+             */
+
+            double x = 19;
+            double y = 23;
+            double z = 8;
+            double w = (x + y) / z;
+            Console.WriteLine(w);
+
+            double maxD = double.MaxValue; 
+            double minD = double.MinValue;
+            Console.WriteLine($"The range of double is {minD} to {maxD}");
+
+            double third = 1.0 / 3.0;
+            Console.WriteLine(third);
+
+            /*
+             * Work with the decimal type
+             */
+
+            //Decimal is like double, has a smaller range but more precision
+
+            decimal minDe = decimal.MinValue;
+            decimal maxDe = decimal.MaxValue;
+            Console.WriteLine($"The range of the decimal type is {minDe} to {maxDe}");
+
+            decimal r = 1.0M;
+            decimal t = 3.0M;
+            Console.WriteLine(r/ t);
+
+
+            /* 
+             * Area of a circle whose radius is 2.50 centimeters
+             */
+
+            double radius = 2.50;
+            double area = radius * radius * Math.PI;
+            Console.WriteLine($"The area of a circle with radius {radius}cm is {area} cm squared");
+
+
+
+
             //************************    Tuples and types   *************************************
             //************************    branches and loops   *************************************
             //************************    List collections   *************************************
