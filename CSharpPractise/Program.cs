@@ -1,13 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CSharpPractise
 {
+    /*
+     * Point Class for record type create
+     */
+    public struct Point
+    {
+        int X;
+        int Y;
+
+        public Point(int X, int Y) {
+            this.X = X;
+            this.Y = Y; 
+        }
+
+        public double Slope()
+        {
+            return (double)Y/ (double)X;
+        }
+    }
     internal class Program
     {
+
+
         static void Main(string[] args)
         {
             //************************    Hello World and text   *************************************
@@ -205,11 +226,72 @@ namespace CSharpPractise
 
 
             //************************    Tuples and types   *************************************
+
+            /*
+             * Tuples
+             * 
+             * Ordered Sequences of values with fixed length. Each element of a tuple has a type and an optional name.
+             */
+
+            /*
+             * Tuples
+             */
+
+            Console.WriteLine();
+
+            // A tuple in C#, variables can have optional names.
+            var pt = (X: 1, Y: 2);
+            var slope = (double)pt.Y / (double)pt.X;
+            Console.WriteLine($"A line from the origin to the point {pt} has a slope of {slope}.");
+
+            //We can reassign any member of a tuple
+
+            pt.X = pt.X + 5;
+            Console.WriteLine($"The point is now at {pt}");
+
+            //We can also create a new tuple thats a modified version of the original using a with expression
+
+            //Not available in this version of C# to be noted. 
+            //var pt2 = pt with { Y = 10 };
+
+
+            // Tuples are defined by the number of members. Names are for convience
+            var subscript = (A: 0, B: 0);
+            subscript = pt;
+            Console.WriteLine(subscript);
+
+            //We can make other tuples
+            var namedData = (Name: "Morning observation", Temp: 17, Wind: 4);
+            var person = (FirstName: "", LastName: "");
+            var order = (Product: "guitar picks", style: "triangle", quantity: 500, UnitPrice: 0.10m);
+
+
+            /*
+             * Create Record Types
+             */
+
+            //Code doesnt work in this version. 
+            Point ptt = new Point(1, 1);
+            double slopee = ptt.Slope();
+            Console.WriteLine($"The slope of {ptt} is {slopee}");
+            
+            
+
+
+
+
             //************************    branches and loops   *************************************
+
+            /*
+             * C# if statements and loops - conditional logc tutorial
+             */
+
+
+
             //************************    List collections   *************************************
             //************************    Pattern matching   *************************************
 
-
+            Console.WriteLine("");
         }
     }
 }
