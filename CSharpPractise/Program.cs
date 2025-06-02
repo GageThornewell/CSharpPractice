@@ -274,21 +274,91 @@ namespace CSharpPractise
             Point ptt = new Point(1, 1);
             double slopee = ptt.Slope();
             Console.WriteLine($"The slope of {ptt} is {slopee}");
-            
-            
+
+
 
 
 
 
             //************************    branches and loops   *************************************
 
+
+            Console.WriteLine("");
+
             /*
              * C# if statements and loops - conditional logc tutorial
              */
 
+            //We already have a and b defined so we just give them new values for this example
+            a = 5;
+            b = 3;
+            c = 4;
+            if ((a + b + c > 10) || (a == b))
+            {
+                Console.WriteLine("The answer is greater than 10");
+                Console.WriteLine("And the first number is equal to the second");
+            }
+            else
+            {
+                Console.WriteLine("The answer is not greater than 10");
+                Console.WriteLine("Or the first number is not equal to the second");
+            }
+
+            /**
+             * Use Loops to repeat operations
+             */
+
+            int counter = 0;
+            do
+            {
+                Console.WriteLine($"Hello World! the counter is {counter}");
+                counter++;
+            }
+            while (counter < 10);
+
+            for (int ct = 0; ct < 10; ct++)
+            {
+                Console.WriteLine($"Hello World! The counter is {ct}");
+            }
+
+            /**
+             * Created Nested Loops
+             */
+
+            for (int row = 1; row < 11; row++)
+            {
+                Console.WriteLine($"The row is {row}");
+            }
+
+            for (char column = 'a'; column < 'k'; column++)
+            {
+                Console.WriteLine($"The column is {column}");
+            }
+
+            for (int row = 1; row < 11; row++)
+            {
+                for (char column = 'a'; column < 'k'; column++)
+                {
+                    Console.WriteLine($"The cell is ({row}, {column})");
+                }
+            }
+
+            counter = 1;
+
+            while (counter < 21)
+            {
+                if (counter % 3 == 0)
+                    Console.WriteLine($"{counter} is divisible by 3");
+                counter++;
+            }
+
 
 
             //************************    List collections   *************************************
+
+            Console.WriteLine("");
+
+
             //************************    Pattern matching   *************************************
 
             Console.WriteLine("");
