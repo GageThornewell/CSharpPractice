@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace CSharpPractise
 {
@@ -358,10 +360,150 @@ namespace CSharpPractise
 
             Console.WriteLine("");
 
+            /*
+            * Learn to manage data collections using List<T> in C#
+            */
+
+            List<string> names = new List<string> { "Gage", "Ana", "Felipe" };
+            foreach (var name in names)
+            {
+                Console.WriteLine($"Hello {name.ToUpper()}!");
+            }
+
+            /*
+             * Modify list contents
+             */
+
+            Console.WriteLine();
+            names.Add("Maria");
+            names.Add("Bill");
+            names.Remove("Ana");
+            foreach (var name in names)
+            {
+                Console.WriteLine($"Hello {name.ToUpper()}!");
+            }
+
+            Console.WriteLine($"My name is {names[0]}.");
+            Console.WriteLine($"I've added {names[2]} and {names[3]} to the list.");
+            Console.WriteLine($"The list has {names.Count} people in it");
+
+            /**
+             * Search and sort Lists
+             */
+
+            var index = names.IndexOf("Felipe");
+            if (index == -1)
+            {
+                Console.WriteLine($"When an item is not found, IndexOf returns {index}");
+            }
+            else
+            {
+                Console.WriteLine($"The name {names[index]} is at index {index}");
+            }
+
+            index = names.IndexOf("Not Found");
+            if (index == -1)
+            {
+                Console.WriteLine($"When an item is not found, IndexOf returns {index}");
+            }
+            else
+            {
+                Console.WriteLine($"The name {names[index]} is at index {index}");
+            }
+
+            names.Sort();
+            foreach (var name in names)
+            {
+                Console.WriteLine($"Hello {name.ToUpper()}!");
+            }
+
+            /*
+             * Lists of other types
+             */
+
+            List<int> fibonacciNumbers = new List<int>();
+            fibonacciNumbers.Add(1);
+            fibonacciNumbers.Add(1);
+
+            for(int i = 0; i < 20; i ++)
+            {
+                var previous = fibonacciNumbers[fibonacciNumbers.Count - 1];
+                var previous2 = fibonacciNumbers[fibonacciNumbers.Count - 2];
+                fibonacciNumbers.Add(previous + previous2);
+            }
+
+          
+
+
+            foreach (var item in fibonacciNumbers)
+            {
+                Console.WriteLine(item);
+            }
+
+
+
+
+
 
             //************************    Pattern matching   *************************************
 
             Console.WriteLine("");
+
+            /*
+             * Match data agaisnt patters
+             */
+
+            string bankRecords =
+            "DEPOSIT,   10000, Initial balance\n" +
+            "DEPOSIT,     500, regular deposit\n" +
+            "WITHDRAWAL, 1000, rent\n" +
+            "DEPOSIT,    2000, freelance payment\n" +
+            "WITHDRAWAL,  300, groceries\n" +
+            "DEPOSIT,     700, gift from friend\n" +
+            "WITHDRAWAL,  150, utility bill\n" +
+            "DEPOSIT,    1200, tax refund\n" +
+            "WITHDRAWAL,  500, car maintenance\n" +
+            "DEPOSIT,     400, cashback reward\n" +
+            "WITHDRAWAL,  250, dining out\n" +
+            "DEPOSIT,    3000, bonus payment\n" +
+            "WITHDRAWAL,  800, loan repayment\n" +
+            "DEPOSIT,     600, stock dividends\n" +
+            "WITHDRAWAL,  100, subscription fee\n" +
+            "DEPOSIT,    1500, side hustle income\n" +
+            "WITHDRAWAL,  200, fuel expenses\n" +
+            "DEPOSIT,     900, refund from store\n" +
+            "WITHDRAWAL,  350, shopping\n" +
+            "DEPOSIT,    2500, project milestone payment\n" +
+            "WITHDRAWAL,  400, entertainment\n";
+
+            //Current balance to keep track of
+            double currentBalance = 0.0;
+            //String reader
+            var reader = new StringReader(bankRecords);
+
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                //If the string is null then restart the loop 
+                if (string.IsNullOrWhiteSpace(line)) continue;
+                //Splits string into an array based on the common seperation
+                string[] parts = line.Split(',');
+
+                string transactionType = parts[0].Trim();
+                double amount;
+
+                if (double.TryParse(parts[1].Trim(), out amount))
+                {
+                    if (transactionType.ToUpper() == "DEPOSIT")
+                        currentBalance += amount;
+                    else if (transactionType.ToUpper() == "WITHDRAWAL")
+                        currentBalance -= amount;
+
+                    Console.WriteLine(line.Trim() + " => Parsed Amount: " + amount + ", New Balance: " + currentBalance);
+                }
+            }
+
+
         }
     }
 }
